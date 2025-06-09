@@ -506,8 +506,8 @@ services:
     container_name: aipan-prisma-migrate
     restart: "no"
     environment:
-      - DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5432/\${POSTGRES_DB}?schema=\${DATABASE_SCHEMA}
-      - SHADOW_DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5432/\${POSTGRES_DB}_shadow?schema=\${DATABASE_SCHEMA}
+      - DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5433/\${POSTGRES_DB}?schema=\${DATABASE_SCHEMA}
+      - SHADOW_DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5433/\${POSTGRES_DB}_shadow?schema=\${DATABASE_SCHEMA}
       # 确保 Prisma 使用正确的数据库用户名
       - POSTGRES_USER=\${POSTGRES_USER}
       - POSTGRES_PASSWORD=\${POSTGRES_PASSWORD}
@@ -528,11 +528,11 @@ services:
       - "\${WS_PORT}:3002"  # WebSocket端口
     environment:
       # 数据库配置
-      - DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5432/\${POSTGRES_DB}?schema=\${DATABASE_SCHEMA}
-      - NUXT_DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5432/\${POSTGRES_DB}?schema=\${DATABASE_SCHEMA}
+      - DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5433/\${POSTGRES_DB}?schema=\${DATABASE_SCHEMA}
+      - NUXT_DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5433/\${POSTGRES_DB}?schema=\${DATABASE_SCHEMA}
       - DATABASE_SCHEMA=\${DATABASE_SCHEMA}
       - NUXT_DATABASE_SCHEMA=\${DATABASE_SCHEMA}
-      - SHADOW_DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5432/\${POSTGRES_DB}_shadow?schema=\${DATABASE_SCHEMA}
+      - SHADOW_DATABASE_URL=postgresql://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5433/\${POSTGRES_DB}_shadow?schema=\${DATABASE_SCHEMA}
       # 数据库连接信息
       - POSTGRES_USER=\${POSTGRES_USER}
       - POSTGRES_PASSWORD=\${POSTGRES_PASSWORD}
@@ -586,7 +586,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - aipan-network
 
